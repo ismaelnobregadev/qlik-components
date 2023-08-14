@@ -25,7 +25,7 @@
 
 <body>
     <div class="qdt-html-template text-center">
-        <img src="banner_html5.jpg" class="banner">
+        
         <h3>This is a simple html page that uses <a href="https://github.com/qlik-demo-team/qdt-components">qdt-components</a>.</h3>
         <ul>
             <li><a href="index.html">Simple Object</a> |</li>
@@ -44,15 +44,27 @@
                  "secure": true,
                  "port": 443,
                  "prefix": "usina",
-                 "appId": "d3991fee-c309-493b-b2d2-b1d3a6d27be7"
+                 "appId": "d183a25e-de1d-47a0-b2a0-459dfbbc20d1"
              },
              "connections": { 
                  "vizApi": true, 
                  "engineApi": true 
              }
          }
-         var qdtComponents = new QdtComponents(qConfig.config, qConfig.connections);
-         qdtComponents.render('QdtSelectionToolbar', {height:'300px'}, document.getElementById('qdt1'));
+         var qdtComponents = new window.QdtComponents.default(qConfig.config, qConfig.connections);
+         var element = document.getElementById('qdt1');
+
+    qdtComponents.render(
+  "QdtFilter", 
+  {
+    cols: ['Porte2'],
+    placeholder: 'Porte',
+    single: true,
+    autoSortByState: 0,
+    showStateInDropdown: true,
+  }, 
+  element
+);
          
      </script>
 </body>
