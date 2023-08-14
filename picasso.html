@@ -47,11 +47,11 @@
   
   <script type="text/javascript">
     const config = {
-      host: 'sense-demo.qlik.com',
+      host: 'qap.sebrae.com.br',
       secure: true,
       port: 443,
-      prefix: '',
-      appId: '133dab5d-8f56-4d40-b3e0-a6b401391bde', // Helpdesk
+      prefix: 'usina',
+      appId: 'd183a25e-de1d-47a0-b2a0-459dfbbc20d1', // Helpdesk
     };
     const { qdtEnigma, qdtCompose, QdtSelections, QdtPicasso, useBarChartSettings, useScatterPlotSettings } = window.QdtComponents;
     qdtEnigma(config)
@@ -80,10 +80,10 @@
           properties: {
             qHyperCubeDef: {
               qDimensions: [
-                { qDef: { qFieldDefs: ['Case Owner Group'] }, qNullSuppression: true },
+                { qDef: { qFieldDefs: ['Porte2'] }, qNullSuppression: true },
               ],
               qMeasures: [
-                { qDef: { qDef: 'Avg([Case Duration Time])', autoSort: false }, qSortBy: { qSortByNumeric: -1 } },
+                { qDef: { qDef: "Count({<TIPO_ESTAB = {'1'}, [%CODSITCADST]={'02'}> } NUM_CNPJ)", autoSort: false }, qSortBy: { qSortByNumeric: -1 } },
               ],
               qInterColumnSortOrder: [1, 0],
             },
@@ -122,25 +122,6 @@
     })
   </script>
 
-  <div class="pt50">
-      <h5>Html</h5>
-      <pre><code class="html">
-  < head>
-      < script type="text/javascript" src="qdt-components.js">< /script>
-  < /head>
-  < body>
-      < div id="qdt1">< /div>
-      < div id="qdt2">< /div>
-  < /body>
-      </code></pre>
-  </div>
-  
-  <div class="pt20">
-      <h5>Javascript</h5>
-      <pre><code class="javascript">
-
-      </code></pre>
-  </div>
 </body>
 
 </html>
