@@ -26,7 +26,7 @@
 
 <body>
   <div class="qdt-html-template text-center">
-    <img src="banner_html5.jpg" class="banner">
+  
     <h3>This is a simple html page that uses <a href="https://github.com/qlik-demo-team/qdt-components">qdt-components</a>.</h3>
     <ul>
       <li><a href="index.html">Simple Object</a> |</li>
@@ -65,6 +65,24 @@
             qSelectionObjectDef: {},
           }
         });
+
+        qdtCompose({
+    element:  document.getElementById('qdt2'),
+    component: QdtSelect,
+    app,
+    options: { multiple: false },
+    properties: {
+      qListObjectDef: {
+        qDef: {
+          qFieldDefs: ['Porte2'],
+        },
+        qInitialDataFetch: [{
+          qWidth: 1,
+          qHeight: 1000,
+        }],
+      },
+    }
+  });
 
         // Barchart
         qdtCompose({
