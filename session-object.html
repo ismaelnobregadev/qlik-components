@@ -126,7 +126,7 @@
                 "spacing": 2,
             }
          }
-         var QdtComponent = QdtComponents(qConfig.config, qConfig.connections);
+         var QdtComponent = new QdtComponents(qConfig.config, qConfig.connections);
          var element = document.getElementById('qdt1');
          QdtComponent.render('QdtViz', {type: 'barchart', options: vizOptions, height:'300px'}, element);
      </script>
