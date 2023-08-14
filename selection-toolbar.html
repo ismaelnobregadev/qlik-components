@@ -38,7 +38,7 @@
     <div id="qdt2"></div>
     
     <script type="text/javascript">
-        const qConfig = {
+        var qConfig = {
              "config": {
                  "host": "qap.sebrae.com.br",
                  "secure": true,
@@ -51,9 +51,9 @@
                  "engineApi": true 
              }
          }
-         const { QdtComponent } = window.QdtComponents(qConfig.config, qConfig.connections);
+         var qdtComponents = new QdtComponents(qConfig.config, qConfig.connections);
          QdtComponent.render('QdtSelectionToolbar', {height:'300px'}, document.getElementById('qdt1'));
-         QdtComponent.render('QdtViz', {id: 'ycppXj', height:'300px'}, document.getElementById('qdt2'));
+         
      </script>
 </body>
 
