@@ -57,7 +57,7 @@
       prefix: 'usina',
       appId: 'd183a25e-de1d-47a0-b2a0-459dfbbc20d1', // Helpdesk
     };
-    const { qdtEnigma, qdtCompose, QdtSelections, QdtPicasso, useBarChartSettings, useScatterPlotSettings } = window.QdtComponents;
+    const { qdtEnigma, qdtCompose, QdtSelections, QdtFilter, QdtPicasso, useBarChartSettings, useScatterPlotSettings } = window.QdtComponents;
     qdtEnigma(config)
       .then(app => {
         qdtCompose({
@@ -67,6 +67,17 @@
           options: {},
           properties: {
             qSelectionObjectDef: {},
+          }
+        });
+
+        qdtCompose({
+          element: document.getElementById('qdt4'),
+          component: QdtFilter,
+          app: app,
+          options: {},
+          properties: {
+            cols: ['Porte2'],
+            qListObjectDef: {},
           }
         });
 
