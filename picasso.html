@@ -25,6 +25,10 @@
 </head>
 
 <body>
+
+  <div id="app">
+
+  </div>
   <div class="qdt-html-template text-center">
   
     <h3>This is a simple html page that uses <a href="https://github.com/qlik-demo-team/qdt-components">qdt-components</a>.</h3>
@@ -66,24 +70,7 @@
           }
         });
 
-        qdtCompose({
-    element:  document.getElementById('qdt2'),
-    component: QdtSelect,
-    app,
-    options: { multiple: false },
-    properties: {
-      qListObjectDef: {
-        qDef: {
-          qFieldDefs: ['Porte2'],
-        },
-        qInitialDataFetch: [{
-          qWidth: 1,
-          qHeight: 1000,
-        }],
-      },
-    }
-  });
-
+ 
         // Barchart
         qdtCompose({
           element: document.getElementById('qdt2'),
