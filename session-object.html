@@ -36,121 +36,17 @@
     </div>
     <div id="qdt1"></div>
     
-    <div class="pt50">
-        <h5>Html</h5>
-        <pre><code class="html">
-    < head>
-        < script type="text/javascript" src="js/qdt-components.js">< /script>
-    < /head>
-    < body>
-        < div id="qdt1">< /div>
-    < /body>
-        </code></pre>
-    </div>
+       
     
-    <div class="pt20">
-        <h5>Javascript</h5>
-        <pre><code class="javascript">
-    var qConfig = {
-        "config": {
-            "host": "sense-demo.qlik.com",
-            "secure": true,
-            "port": 443,
-            "prefix": "",
-            "appId": "133dab5d-8f56-4d40-b3e0-a6b401391bde"
-        },
-        "connections": { 
-            "vizApi": true, 
-            "engineApi": false 
-        }
-    }
-    var vizOptions = {      
-        "showTitles": true,
-        "title": "Custom title",
-        "subtitle": "Custom Subtitle",
-        "footnote": "Custom Footnote",
-        "scrollStartPos": 0,
-        "orientation": "horizontal",
-        "dataPoint": {
-            "showLabels": true
-        },
-        "qHyperCubeDef": {
-            "qDimensions": [{ 
-                "qDef": { 
-                    "qGrouping": "N", 
-                    "qFieldDefs": [ 'Case Owner Group' ],
-                    "qSortCriterias": [ {
-                        "qSortByState": 0,
-                        "qSortByFrequency": 0,
-                        "qSortByNumeric": 0,
-                        "qSortByAscii": 1,
-                        "qSortByLoadOrder": 1,
-                        "qSortByExpression": 0,
-                        "qExpression": {
-                            "qv": ""
-                        },
-                        "qSortByGreyness": 0
-                    }],
-                } 
-            }],
-            "qMeasures": [{
-                "qDef": {
-                    "qDef": '=Avg([Case Duration Time])',
-                    "qLabel": "Custom Measure Label"
-                },
-                "qSortBy": { 
-                    "qSortByState": 0, 
-                    "qSortByFrequency": 0, 
-                    "qSortByNumeric": -1, 
-                    "qSortByAscii": 0, 
-                    "qSortByLoadOrder": 1, 
-                    "qSortByExpression": 0, 
-                    "qExpression": { 
-                        "qv": "" 
-                    } 
-                },
-                "qAttributeExpressions": [{
-                    "qExpression": "If(firstsortedvalue( Priority, -Aggr(Count({<[Cases Open/Closed]={'Open Cases'}>}Distinct [%CaseId] ),[Case Owner Group],Priority))='Low', rgb(39,110,39),  If(firstsortedvalue( Priority, -Aggr(Count({<[Cases Open/Closed]={'Open Cases'}>}Distinct [%CaseId] ),[Case Owner Group],Priority))='Medium', rgb(255,207,2),  If(firstsortedvalue( Priority, -Aggr(Count({<[Cases Open/Closed]={'Open Cases'}>}Distinct [%CaseId] ),[Case Owner Group],Priority))='High', rgb(249,63,23))))",
-                    "id": "colorByExpression"
-                }]
-            }],
-            "qInterColumnSortOrder": [
-                1,
-                0
-            ],
-            "qSuppressZero": false,
-            "qSuppressMissing": true,
-        },
-        "color": {
-            "auto": false,
-            "mode": "byExpression",
-            "expressionIsColor": true
-        },
-        "legend": {
-            "show": true
-        },
-        "dimensionAxis": {
-            "show": "labels"
-        },
-        "measureAxis": {
-            "show": "labels",
-            "spacing": 2,
-        }
-    }
-    var QdtComponent = new window.QdtComponents(qConfig.config, qConfig.connections);
-    var element = document.getElementById('qdt1');
-    QdtComponent.render('QdtViz', {type: 'barchart', options: vizOptions, height:'300px'}, element);
-        </code></pre>
-    </div>
 
     <script type="text/javascript">
         var qConfig = {
              "config": {
-                 "host": "sense-demo.qlik.com",
+                 "host": "qap.sebrae.com.br",
                  "secure": true,
                  "port": 443,
-                 "prefix": "",
-                 "appId": "133dab5d-8f56-4d40-b3e0-a6b401391bde"
+                 "prefix": "usina",
+                 "appId": "d183a25e-de1d-47a0-b2a0-459dfbbc20d1"
              },
              "connections": { 
                  "vizApi": true, 
@@ -171,7 +67,7 @@
                 "qDimensions": [{ 
                     "qDef": { 
                         "qGrouping": "N", 
-                        "qFieldDefs": [ 'Case Owner Group' ],
+                        "qFieldDefs": ["Porte2"],
                         "qSortCriterias": [ {
                             "qSortByState": 0,
                             "qSortByFrequency": 0,
@@ -188,7 +84,7 @@
                 }],
                 "qMeasures": [{
                     "qDef": {
-                        "qDef": '=Avg([Case Duration Time])',
+                        "qDef": 'Count({<TIPO_ESTAB = {'1'}, [%CODSITCADST]={'02'}> } NUM_CNPJ)',
                         "qLabel": "Custom Measure Label"
                     },
                     "qSortBy": { 
