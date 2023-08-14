@@ -95,6 +95,29 @@
           }
         });
 
+        qdtCompose({
+          element: document.getElementById('qdt3'),
+          component: QdtPicasso,
+          app,
+          options: {
+            settings: useBarChartSettings({
+              orientation: 'horizontal',
+            }),
+            height: 400,
+          },
+          properties: {
+            qHyperCubeDef: {
+              qDimensions: [
+                { qDef: { qFieldDefs: ['Descrição Setor'] }, qNullSuppression: true },
+              ],
+              qMeasures: [
+                { qDef: { qDef: "Count({<TIPO_ESTAB = {'1'}, [%CODSITCADST]={'02'}> } NUM_CNPJ)", autoSort: false }, qSortBy: { qSortByNumeric: -1 } },
+              ],
+              qInterColumnSortOrder: [1, 0],
+            },
+          }
+        });
+
         // Scatterplot
         qdtCompose({
           element: document.getElementById('qdt7'),
