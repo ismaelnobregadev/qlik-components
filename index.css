@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+
+}
 body {padding: 30px;}
 h3 {padding-bottom: 50px;color: black;padding-top: 20px;}
 .text-center {text-align: center;}
@@ -9,6 +18,24 @@ h3 {padding-bottom: 50px;color: black;padding-top: 20px;}
 .qdt-html-template ul {list-style: none;}
 .qdt-html-template li {display: inline-block;}
 .banner {width:100%; height:100%; max-width:810px; max-height: 250px;} */
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
 
 .container {  display: grid;
     grid-template-columns: 30% 35% 35.3%;
@@ -47,4 +74,20 @@ h3 {padding-bottom: 50px;color: black;padding-top: 20px;}
   .objeto6 { grid-area: objeto6; }
   
   .sidebar-nav { grid-area: sidebar-nav; }
+
+  
+/* SIDEBAR */
+#sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 280px;
+	height: 100%;
+	background: var(--light);
+	z-index: 2000;
+	font-family: var(--lato);
+	transition: .3s ease;
+	overflow-x: hidden;
+	scrollbar-width: none;
+}
   
