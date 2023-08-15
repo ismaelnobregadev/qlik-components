@@ -3,7 +3,8 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
+    <!-- <base href="https://webapps.qlik.com/qdt-components/plain-html/"> -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Simple html with qdt-components</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -21,67 +22,169 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
-</head> 
+</head>
 
 <body>
-  <div class="qdt-html-template text-center">
-    <img src="banner_html5.jpg" class="banner">
-    <h3>This is a simple html page that uses <a href="https://github.com/qlik-demo-team/qdt-components">qdt-components</a> (3.0).</h3>
-    <ul>
-        <li><a href="index.html">Simple Object</a> |</li>
-        <li><a href="session-object.html">Session Object</a> | </li>
-        <li><a href="selection-toolbar.html">Selection Toolbar</a> | </li>
-        <li><a href="picasso.html">Picasso - Charts</a> | </li>
-        <li><a href="table.html">Table from Engine API</a> | </li>
-        <li><a href="kpi.html">KPI from Engine API</a></li>
-        <li><a href="treemap.html">KPI from Engine API</a></li>
-    </ul>
-  </div>
-  <div id="qdt1" style="padding: 50px 0;"></div>
-  <div id="qdt2"></div>
-  
-  <script type="text/javascript">
-      const config = {
-        host: 'qap.sebrae.com.br',
-        secure: true,
-        port: 443,
-        prefix: 'usina',
-        appId: 'd183a25e-de1d-47a0-b2a0-459dfbbc20d1', // Helpdesk
-      };
-      const { qdtCapabilityApp, QdtViz } = window.QdtComponents;
-      const element1 = document.getElementById('qdt1');
-      const element2 = document.getElementById('qdt2');
 
-      const init = async () => {
-        const app = await qdtCapabilityApp(config);
-        QdtViz({
-          element: element1,
-          app,
-          options: {
-            id: 'CurrentSelections',
-            height: 50
-          },
+  <!-- <div id="app">
+
+  </div>
+  <div class="qdt-html-template text-center">
+  
+    <h3>This is a simple html page that uses <a href="https://github.com/qlik-demo-team/qdt-components">qdt-components</a>.</h3>
+    <ul>
+      <li><a href="index.html">Simple Object</a> |</li>
+      <li><a href="session-object.html">Session Object</a> | </li>
+      <li><a href="selection-toolbar.html">Selection Toolbar</a> | </li>
+      <li><a href="picasso.html">Picasso - Charts</a></li>
+    </ul>
+  </div> -->
+
+  <!-- 
+
+  <div id="qdt1" class="pb50"></div>
+  <div id="qdt2" class="pb50"></div>
+  <div id="qdt3" class="pb50"></div>
+  <div id="qdt4" class="pb50"></div>
+  <div id="qdt5" class="pb50"></div>
+  <div id="qdt6" class="pb50"></div>
+  <div id="qdt7" class="pb50"></div>
+  <div id="qdt8" class="pb50"></div> -->
+
+  <div class="container">
+    <div class="header"></div>
+    <div class="logo"></div>
+    <div id="selection-bar" class="selection-bar"></div>
+    <div class="filter-area-1"></div>
+    <div class="filter-area-2"></div>
+    <div class="objeto1"></div>
+    <div class="objeto2"></div>
+    <div class="objeto3"></div>
+    <div class="objeto4"></div>
+    <div class="objeto5"></div>
+    <div class="objeto6"></div>
+    <div class="sidebar-nav"></div>
+  </div>
+  
+
+  <script type="text/javascript">
+    const config = {
+      host: 'qap.sebrae.com.br',
+      secure: true,
+      port: 443,
+      prefix: 'usina',
+      appId: 'd183a25e-de1d-47a0-b2a0-459dfbbc20d1', // Helpdesk
+    };
+    const { qdtEnigma, qdtCompose, QdtSelections, QdtSelect, QdtFilter, QdtPicasso, useBarChartSettings, useScatterPlotSettings } = window.QdtComponents;
+    qdtEnigma(config)
+      .then(app => {
+        qdtCompose({
+          element: document.getElementById('selection-bar'),
+          component: QdtSelections,
+          app: app,
+          options: {},
+          properties: {
+            qSelectionObjectDef: {},
+          }
         });
-        QdtViz({
-          element: element2,
+
+        qdtCompose({
+    element: document.getElementById('filter-area-1'),
+    component: QdtSelect,
+    app,
+    options: { multiple: false },
+    properties: {
+      qListObjectDef: {
+        qDef: {
+          qFieldDefs: ['Porte2'],
+        },
+        qInitialDataFetch: [{
+          qWidth: 1,
+          qHeight: 1000,
+        }],
+      },
+    }
+  });
+
+ 
+        // Barchart
+        qdtCompose({
+          element: document.getElementById('objeto1'),
+          component: QdtPicasso,
           app,
           options: {
-            id: 'd3991fee-c309-493b-b2d2-b1d3a6d27be7',
+            settings: useBarChartSettings({
+              orientation: 'horizontal',
+            }),
             height: 400,
           },
           properties: {
-            exportData: false,
-            exportDataOptions: { format: 'CSV_T', state: 'P' },
-            exportImg: false,
-            exportImgOptions: { width: 600, height: 400, format: 'JPG' },
-            exportPdf: false,
-            exportPdfOptions: { documentSize: { width: 300, height: 150 } },
+            qHyperCubeDef: {
+              qDimensions: [
+                { qDef: { qFieldDefs: ['Porte2'] }, qNullSuppression: true },
+              ],
+              qMeasures: [
+                { qDef: { qDef: "Count({<TIPO_ESTAB = {'1'}, [%CODSITCADST]={'02'}> } NUM_CNPJ)", autoSort: false }, qSortBy: { qSortByNumeric: -1 } },
+              ],
+              qInterColumnSortOrder: [1, 0],
+            },
           }
         });
-      }
-      init();
-    </script>
-    
+
+        qdtCompose({
+          element: document.getElementById('objeto2'),
+          component: QdtPicasso,
+          app,
+          options: {
+            settings: useBarChartSettings({
+              orientation: 'horizontal',
+            }),
+            height: 400,
+          },
+          properties: {
+            qHyperCubeDef: {
+              qDimensions: [
+                { qDef: { qFieldDefs: ['Descrição Setor'] }, qNullSuppression: true },
+              ],
+              qMeasures: [
+                { qDef: { qDef: "Count({<TIPO_ESTAB = {'1'}, [%CODSITCADST]={'02'}> } NUM_CNPJ)", autoSort: false }, qSortBy: { qSortByNumeric: -1 } },
+              ],
+              qInterColumnSortOrder: [1, 0],
+            },
+          }
+        });
+
+        // Scatterplot
+        qdtCompose({
+          element: document.getElementById('objeto3'),
+          component: QdtPicasso,
+          app,
+          options: {
+            settings: useScatterPlotSettings(),
+            height: 400,
+          },
+            properties: {
+              qHyperCubeDef: {
+                qDimensions: [
+                  { qDef: { qFieldDefs: ['Case Owner'] } },
+                ],
+                qMeasures: [
+                  {
+                    qDef: {
+                      qDef: 'Avg([Case Duration Time])',
+                      qLabel: 'Avg Case Duration Time',
+                    },
+                  }, {
+                    qDef: {
+                      qDef: 'Count( {$<Status -={\'Closed\'} >} Distinct %CaseId )',
+                    },
+                  },
+            ],
+          },
+        }
+      });
+    })
+  </script>
 
 </body>
 

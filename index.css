@@ -2,10 +2,49 @@ body {padding: 30px;}
 h3 {padding-bottom: 50px;color: black;padding-top: 20px;}
 .text-center {text-align: center;}
 .color-black {color: black;}
-.pt20 { padding-top: 20px; }
+/* .pt20 { padding-top: 20px; }
 .pt50 { padding-top: 50px; }
 .pb30 { padding-bottom: 30px; }
 .pb50 { padding-bottom: 50px; }
 .qdt-html-template ul {list-style: none;}
 .qdt-html-template li {display: inline-block;}
-.banner {width:100%; height:100%; max-width:810px; max-height: 250px;}
+.banner {width:100%; height:100%; max-width:810px; max-height: 250px;} */
+
+.container {  display: grid;
+    grid-template-columns: 30% 35% 35.3%;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "logo header header"
+      "sidebar-nav selection-bar selection-bar"
+      "sidebar-nav filter-area-1 filter-area-2"
+      "sidebar-nav objeto1 objeto2"
+      "sidebar-nav objeto3 objeto4"
+      "sidebar-nav objeto5 objeto6";
+  }
+  
+  .header { grid-area: header; }
+  
+  .logo { grid-area: logo; }
+  
+  .selection-bar { grid-area: selection-bar; }
+  
+  .filter-area-1 { grid-area: filter-area-1; }
+  
+  .filter-area-2 { grid-area: filter-area-2; }
+  
+  .objeto1 { grid-area: objeto1; }
+  
+  .objeto2 { grid-area: objeto2; }
+  
+  .objeto3 { grid-area: objeto3; }
+  
+  .objeto4 { grid-area: objeto4; }
+  
+  .objeto5 { grid-area: objeto5; }
+  
+  .objeto6 { grid-area: objeto6; }
+  
+  .sidebar-nav { grid-area: sidebar-nav; }
+  
